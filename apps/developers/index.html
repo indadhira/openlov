@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>developers Tools — OpenLov</title>
+    <link rel="stylesheet" href="../../shared/css/variables.css">
+    <link rel="stylesheet" href="../../shared/css/layout.css">
+</head>
+<body>
+    <nav><div class="logo">OpenLov developers</div></nav>
+    <main>
+        <h1>Explore developers Tools</h1>
+        <div id="tool-list-container" class="list-grid">
+            </div>
+    </main>
+    <script type="module">
+        import OL_CONFIG from '../../shared/js/config.js';
+        const container = document.getElementById('tool-list-container');
+        const catData = OL_CONFIG.categories.find(c => c.id === 'developers');
+        if(catData) {
+            catData.tools.forEach(tool => {
+                const item = document.createElement('a');
+                item.href = `/${tool}`;
+                item.className = 'tool-link-card';
+                item.innerHTML = `<h3>${tool.replace('-', ' ').toUpperCase()}</h3>`;
+                container.appendChild(item);
+            });
+        }
+    </script>
+</body>
+</html>
