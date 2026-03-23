@@ -17,3 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     console.log("🚀 OpenLov Engine Active");
 });
+
+// Tool Page Logic
+export const loadTool = (toolId) => {
+    const container = document.getElementById('tool-container');
+    if(!container) return;
+    
+    // Yahan hum Tool ka Input form inject karenge
+    console.log("Loading Tool Logic for: " + toolId);
+};
