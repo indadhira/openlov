@@ -1,0 +1,26 @@
+.tool-link-card {
+    display: block;
+    padding: 20px;
+    margin: 10px 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    transition: 0.2s;
+    background: #fafafa;
+}
+.tool-link-card:hover {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.main-btn {
+    background: var(--primary);
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
