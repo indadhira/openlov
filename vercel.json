@@ -1,9 +1,0 @@
-{
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "destination": "/index.html" },
-    { "source": "/finance/:path*", "destination": "/apps/finance/:path*" },
-    { "source": "/ai/:path*", "destination": "/apps/ai/:path*" },
-    { "source": "/sports/:path*", "destination": "/apps/sports/:path*" }
-  ]
-}
