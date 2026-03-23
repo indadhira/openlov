@@ -3,39 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EMI Calculator — OpenLov Finance</title>
+    <title>Emi — OpenLov</title>
     <link rel="stylesheet" href="../../shared/css/variables.css">
     <link rel="stylesheet" href="../../shared/css/layout.css">
-    <style>
-        .calc-box { max-width: 500px; margin: 40px auto; padding: 30px; border: 1px solid var(--border); border-radius: 15px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid var(--border); border-radius: 8px; }
-        .result { margin-top: 20px; font-size: 1.5rem; color: var(--primary); font-weight: bold; }
-    </style>
 </head>
 <body>
-    <nav><div class="logo">OpenLov Finance</div></nav>
-    <main>
-        <div class="calc-box">
-            <h2>EMI Calculator</h2>
-            <input type="number" id="p" placeholder="Principal Amount (₹)">
-            <input type="number" id="r" placeholder="Interest Rate (%)">
-            <input type="number" id="n" placeholder="Tenure (Months)">
-            <button onclick="calculate()" style="background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; width: 100%;">Calculate EMI</button>
-            <div class="result" id="res">₹ 0.00</div>
-        </div>
-    </main>
-
+    <nav><div class="logo">OpenLov</div></nav>
+    <main id="tool-container"></main>
     <script type="module">
-        import OL_CALCS from '../../shared/js/calculators.js';
-        window.calculate = () => {
-            const p = document.getElementById('p').value;
-            const r = document.getElementById('r').value;
-            const n = document.getElementById('n').value;
-            if(p && r && n) {
-                const emi = OL_CALCS.emi(p, r, n);
-                document.getElementById('res').innerText = '₹ ' + emi.toLocaleString('en-IN', {maximumFractionDigits: 2});
-            }
-        };
+        import { loadToolUI } from '../../shared/js/engine.js';
+        loadToolUI('emi');
     </script>
 </body>
 </html>
