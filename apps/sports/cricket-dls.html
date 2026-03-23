@@ -3,16 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cricket Dls — OpenLov</title>
+    <title>DLS Calculator — OpenLov Sports</title>
     <link rel="stylesheet" href="../../shared/css/variables.css">
-    <link rel="stylesheet" href="../../shared/css/layout.css">
+    <style>
+        body { background: #0a0a0a; color: #fff; font-family: 'DM Sans', sans-serif; }
+        .dls-card { 
+            background: linear-gradient(145deg, #1a1a1b, #0a0a0a);
+            border: 2px solid #e8420a; /* Saffron/Orange theme */
+            box-shadow: 0 0 20px rgba(232, 66, 10, 0.3);
+            border-radius: 20px; padding: 30px; max-width: 500px; margin: 40px auto;
+        }
+        h1 { color: #e8420a; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
+        input { background: #1a1a1b; border: 1px solid #333; color: #fff; padding: 12px; width: 100%; margin: 10px 0; border-radius: 8px; }
+        .calculate-btn { 
+            background: #e8420a; color: #fff; font-weight: 900; 
+            padding: 15px; width: 100%; border: none; border-radius: 8px; margin-top: 20px;
+            cursor: pointer; transition: 0.3s;
+        }
+        .calculate-btn:hover { transform: scale(1.02); box-shadow: 0 0 15px #e8420a; }
+        .target-box { font-size: 2rem; text-align: center; margin-top: 20px; color: #e8420a; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <nav><div class="logo">OpenLov</div></nav>
-    <main id="tool-container"></main>
+    <div class="dls-card">
+        <h1>DLS Target Master</h1>
+        <input type="number" id="t1s" placeholder="Team 1 Score">
+        <input type="number" id="o1" placeholder="Original Overs (e.g. 50)">
+        <input type="number" id="o2" placeholder="Revised Overs (Team 2)">
+        <input type="number" id="w" placeholder="Wickets Lost by Team 2">
+        <button class="calculate-btn" onclick="calcDLS()">Calculate Revised Target</button>
+        <div class="target-box" id="result">Target: 0</div>
+    </div>
+
     <script type="module">
-        import { loadToolUI } from '../../shared/js/engine.js';
-        loadToolUI('cricket-dls');
+        import { dlsCalc } from '../../shared/js/calculators.js';
+        window.calcDLS = () => {
+            const score = document.getElementById('t1s').value;
+            const o1 = document.getElementById('o1').value;
+            const o2 = document.getElementById('o2').value;
+            const w = document.getElementById('w').value;
+            if(score && o1 && o2) {
+                const target = dlsCalc(score, o1, o2, w);
+                document.getElementById('result').innerText = 'Revised Target: ' + target;
+            }
+        };
     </script>
 </body>
 </html>

@@ -23,3 +23,11 @@ const OL_CALCS = {
     }
 };
 export default OL_CALCS;
+
+// 🏏 DLS Calculator Logic (Simple Resource Method)
+export const dlsCalc = (team1Score, oversTeam1, oversTeam2, wicketsLost) => {
+    // Standard ODI calculation logic
+    let target = Math.floor(team1Score * (oversTeam2 / oversTeam1));
+    if(wicketsLost > 0) target = target + (wicketsLost * 10); // Adding pressure weight
+    return target + 1; // 1 run extra for win
+};
