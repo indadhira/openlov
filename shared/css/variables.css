@@ -1,0 +1,14 @@
+:root {
+    --primary: #e8420a;
+    --bg: #ffffff;
+    --text: #1a1a1b;
+    --gray: #757575;
+    --border: #f2f2f2;
+    --font-main: 'DM Sans', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+}
+[data-theme="dark"] {
+    --bg: #1a1a1b;
+    --text: #ffffff;
+    --border: #292929;
+}
