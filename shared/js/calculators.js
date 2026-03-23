@@ -31,3 +31,11 @@ export const dlsCalc = (team1Score, oversTeam1, oversTeam2, wicketsLost) => {
     if(wicketsLost > 0) target = target + (wicketsLost * 10); // Adding pressure weight
     return target + 1; // 1 run extra for win
 };
+
+// 🚩 Epic Video Prompt Logic
+export const generateEpicPrompt = (type) => {
+    if(type === 'hanuman') {
+        return "Cinematic 3D animation, Jai Hanuman movie style, hyper-realistic, 8k, golden lighting, divine atmosphere, powerful muscles, flying over Himalayas, Sanskrit lyrics syncing in background.";
+    }
+    return "Ultra-realistic cinematic shot, high detail, volumetric lighting.";
+};
