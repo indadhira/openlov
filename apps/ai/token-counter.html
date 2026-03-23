@@ -3,16 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token Counter — OpenLov</title>
+    <title>AI Token Counter — OpenLov</title>
     <link rel="stylesheet" href="../../shared/css/variables.css">
     <link rel="stylesheet" href="../../shared/css/layout.css">
+    <style>
+        .token-box { max-width: 600px; margin: auto; padding: 20px; background: #f9f9f9; border-radius: 15px; border: 1px solid #eee; }
+        textarea { width: 100%; height: 200px; padding: 15px; border-radius: 10px; border: 1px solid #ddd; font-family: monospace; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .stat-card { background: #fff; padding: 15px; border-radius: 8px; text-align: center; border: 1px solid #eee; }
+        .stat-val { font-size: 1.5rem; font-weight: bold; color: #e8420a; }
+    </style>
 </head>
 <body>
-    <nav><div class="logo">OpenLov</div></nav>
-    <main id="tool-container"></main>
+    <nav><a href="/" class="logo">OpenLov ai</a></nav>
+    <div class="token-box">
+        <h2>AI Token Counter</h2>
+        <p>Paste your text to estimate tokens for GPT-4, Gemini, or Claude.</p>
+        <textarea id="ai-input" placeholder="Type or paste your text here..." oninput="updateStats()"></textarea>
+        
+        <div class="stats-grid">
+            <div class="stat-card"><div>Tokens</div><div id="t-count" class="stat-val">0</div></div>
+            <div class="stat-card"><div>Words</div><div id="w-count" class="stat-val">0</div></div>
+            <div class="stat-card"><div>Characters</div><div id="c-count" class="stat-val">0</div></div>
+        </div>
+    </div>
+
     <script type="module">
-        import { loadToolUI } from '../../shared/js/engine.js';
-        loadToolUI('token-counter');
+        import { countTokens } from '../../shared/js/calculators.js';
+        window.updateStats = () => {
+            const text = document.getElementById('ai-input').value;
+            const res = countTokens(text);
+            document.getElementById('t-count').innerText = res.tokens;
+            document.getElementById('w-count').innerText = res.words;
+            document.getElementById('c-count').innerText = res.chars;
+        };
     </script>
 </body>
 </html>

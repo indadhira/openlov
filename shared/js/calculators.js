@@ -39,3 +39,12 @@ export const generateEpicPrompt = (type) => {
     }
     return "Ultra-realistic cinematic shot, high detail, volumetric lighting.";
 };
+
+// 🤖 AI Token Counter Logic (Approximate)
+export const countTokens = (text) => {
+    const words = text.trim().split(/\s+/).length;
+    const chars = text.length;
+    // Standard rule: 1 token is roughly 4 characters or 0.75 words
+    const tokens = Math.ceil(chars / 4);
+    return { words, chars, tokens };
+};
