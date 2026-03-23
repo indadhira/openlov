@@ -3,16 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gen — OpenLov</title>
+    <title>AI Image Prompt Gen — OpenLov</title>
     <link rel="stylesheet" href="../../shared/css/variables.css">
     <link rel="stylesheet" href="../../shared/css/layout.css">
 </head>
 <body>
-    <nav><div class="logo">OpenLov</div></nav>
-    <main id="tool-container"></main>
-    <script type="module">
-        import { loadToolUI } from '../../shared/js/engine.js';
-        loadToolUI('image-gen');
+    <nav><a href="/" class="logo">OpenLov ai</a></nav>
+    <div style="max-width: 600px; margin: auto; padding: 20px;">
+        <h2>🎨 AI Image Prompt Generator</h2>
+        <p>Enter a simple idea, and we'll make it an Epic AI Prompt.</p>
+        <input type="text" id="idea" placeholder="e.g. Hanuman flying with mountain" style="width:100%; padding:15px; border-radius:10px; border:1px solid #ddd;">
+        <button onclick="genPrompt()" class="main-btn" style="margin-top:15px; background:#e8420a; color:white; border:none; padding:15px; border-radius:10px; cursor:pointer; width:100%;">Generate Master Prompt</button>
+        
+        <div id="res-box" style="margin-top:20px; display:none; background:#f4f4f4; padding:20px; border-radius:10px; border-left:5px solid #e8420a;">
+            <p id="final-prompt" style="font-style: italic;"></p>
+            <button onclick="copyText()" style="font-size:12px; cursor:pointer;">Copy Prompt</button>
+        </div>
+    </div>
+
+    <script>
+        function genPrompt() {
+            const idea = document.getElementById('idea').value;
+            const resBox = document.getElementById('res-box');
+            const finalP = document.getElementById('final-prompt');
+            if(idea) {
+                finalP.innerText = `Cinematic shot of ${idea}, hyper-realistic, 8k resolution, volumetric lighting, intricate details, photorealistic, trending on ArtStation, masterpiece.`;
+                resBox.style.display = 'block';
+            }
+        }
+        function copyText() {
+            const text = document.getElementById('final-prompt').innerText;
+            navigator.clipboard.writeText(text);
+            alert("Prompt Copied!");
+        }
     </script>
 </body>
 </html>
