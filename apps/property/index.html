@@ -21,7 +21,7 @@
         if(catData) {
             catData.tools.forEach(tool => {
                 const item = document.createElement('a');
-                item.href = `/${tool}`;
+                item.href = `${tool}.html`;
                 item.className = 'tool-link-card';
                 item.innerHTML = `<h3>${tool.replace('-', ' ').toUpperCase()}</h3>`;
                 container.appendChild(item);
